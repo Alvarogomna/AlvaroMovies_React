@@ -45,7 +45,7 @@ export default class Movies extends React.Component{
       movies: [],
       
     }
-    
+   
   }
   
   componentDidMount(){
@@ -104,7 +104,13 @@ export default class Movies extends React.Component{
     return <MovieCell 
               movieTitle={item.title}
               moviePoster={Movies.BASE_IMG_URL + item.poster_path}
-              onPress={() => this.props.navigation.navigate('movieDescription')}
+              onPress={() => this.props.navigation.navigate('movieDescription',{
+                // lo que se pasa a la vista movieDescription con props.route.param.movie
+                movie: item,
+                moviePoster: Movies.BASE_IMG_URL + item.poster_path,
+              
+                //movieTitle: item.title,
+              })}
               />
               
   }
